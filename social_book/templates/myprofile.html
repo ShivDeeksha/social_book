@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>User Profile</title>
+        <link rel="stylesheet" href="{% static 'style.css' %}">
+    </head>
+
+    <body>
+        <div class="profile-container">
+            <div class="profile-card">
+                <div class="profile-header">
+                    <img src="{% static 'images/bg2.jpg' %}" alt="Profile Background" class="profile-bg">
+                    <div class="profile-info">
+                        <img src="{% static 'images/avatar.jpg' %}" alt="User Avatar" class="avatar">
+                        <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+                        <p class="email">{{ user.email }}</p>
+                    </div>
+                </div>
+                <div class="profile-details">
+                    <h3>Personal Information</h3>
+                    <ul>
+                        <li><strong>Phone Number:</strong> {{ user.phone_number }}</li>
+                        <li><strong>Address:</strong> {{ user.address }}</li>
+                        <li><strong>Joined:</strong> {{ user.date_joined|date:"d M Y" }}</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </body>
+
+</html>
