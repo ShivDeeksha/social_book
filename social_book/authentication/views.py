@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login as auth_login, authenticate
 from django.contrib import messages
-from .forms import SignUpForm, SignInForm
+from .forms import SignUpForm, SignInForm, ProfileEditForm
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
+from books.forms import BookForm
+from books.models import Book
 
 def signup(request):
     if request.method == 'POST':
@@ -39,4 +41,26 @@ def login(request):
 
 @login_required
 def profile(request):
-    return render(request, 'profile.html', {'user': request.user})
+    profile_form = ProfileEditForm(request.POST or None, instance=request.user)
+    book_form = BookForm(request.POST or None, request.FILES or None)
+
+    if request.method == 'POST':
+        if 'update_profile' in request.POST and profile_form.is_valid():
+            profile_form.save()
+            messages.success(request, 'Your profile was successfully updated!')
+            return redirect('profile')
+
+        if 'upload_book' in request.POST and book_form.is_valid():
+            book = book_form.save(commit=False)
+            book.user = request.user
+            book.save()
+            return JsonResponse({'success': True, 'redirect_url': '#'})
+
+        return JsonResponse({'success': False, 'message': 'Please correct the errors below.'})
+
+
+    return render(request, 'profile.html', {
+        'form': profile_form,
+        'book_form': book_form,
+        'user': request.user
+    })

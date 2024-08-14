@@ -67,3 +67,17 @@ class SignInForm(AuthenticationForm):
     class Meta:
         model = CustomUser
         fields = ['username', 'password']
+
+class ProfileEditForm(forms.ModelForm):
+    class Meta:
+        model = CustomUser
+        fields = ['first_name', 'last_name', 'email', 'bio', 'username', 'address', 'birth_date']
+        widgets = {
+            'bio': forms.Textarea(attrs={'class': 'form-control'}),
+            'first_name': forms.TextInput(attrs={'class': 'form-control form-control-lg'}),
+            'last_name': forms.TextInput(attrs={'class': 'form-control form-control-lg'}),
+            'username': forms.TextInput(attrs={'class': 'form-control form-control-lg'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control form-control-lg'}),
+            'birth_date': forms.DateInput(attrs={'class': 'form-control form-control-lg date-picker', 'type': 'text'}),
+            'address': forms.TextInput(attrs={'class': 'form-control form-control-lg'}),
+        }

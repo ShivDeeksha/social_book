@@ -14,6 +14,7 @@ class CustomUser(AbstractUser):
     user_type = models.CharField(max_length=10, choices=USER_TYPE_CHOICES)
     public_visibility = models.BooleanField(default=True)
     age = models.IntegerField(editable=False, null=True)
+    bio = models.CharField(max_length=500,default="This is my bio.")
 
     groups = models.ManyToManyField(
         Group,
