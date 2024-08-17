@@ -1,0 +1,823 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <!-- Basic Page Info -->
+        <meta charset="utf-8">
+        <title>My Profile</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="images/icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="images/icon.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="images/icon.png">
+
+        <!-- Mobile Specific Metas -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+        <!-- Google Font -->
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+            rel="stylesheet">
+        <!-- CSS -->
+        <link rel="stylesheet" type="text/css" href="vendors/styles/core.css">
+        <link rel="stylesheet" type="text/css" href="vendors/styles/icon-font.min.css">
+        <link rel="stylesheet" type="text/css" href="src/plugins/cropperjs/dist/cropper.css">
+        <link rel="stylesheet" type="text/css" href="vendors/styles/style.css">
+        <link rel="stylesheet" type="text/css" href="src/plugins/jquery-steps/jquery.steps.css">
+        <link rel="stylesheet" type="text/css" href="src/plugins/dropzone/src/dropzone.css">
+
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+
+            gtag('config', 'UA-119386393-1');
+        </script>
+    </head>
+
+    <body>
+        <!-- <div class="pre-loader">
+		<div class="pre-loader-box">
+			<div class="loader-logo"><img src="vendors/images/deskapp-logo.svg" alt=""></div>
+			<div class='loader-progress' id="progress_div">
+				<div class='bar' id='bar1'></div>
+			</div>
+			<div class='percent' id='percent1'>0%</div>
+			<div class="loading-text">
+				Loading...
+			</div>
+		</div>
+	</div> -->
+
+        <div class="header">
+            <div class="header-left">
+                <div class="menu-icon dw dw-menu"></div>
+                <div class="search-toggle-icon dw dw-search2" data-toggle="header_search"></div>
+            </div>
+            <div class="header-right">
+                <div class="dashboard-setting user-notification">
+                    <div class="dropdown">
+                        <a class="dropdown-toggle no-arrow" href="javascript:;" data-toggle="right-sidebar">
+                            <i class="dw dw-settings2"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="user-notification">
+                    <div class="dropdown">
+                        <a class="dropdown-toggle no-arrow" href="#" role="button" data-toggle="dropdown">
+                            <i class="icon-copy dw dw-notification"></i>
+                            <span class="badge notification-active"></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <div class="notification-list mx-h-350 customscroll">
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <img src="vendors/images/img.jpg" alt="">
+                                            <h3>John Doe</h3>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="vendors/images/photo1.jpg" alt="">
+                                            <h3>Lea R. Frith</h3>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="vendors/images/photo2.jpg" alt="">
+                                            <h3>Erik L. Richards</h3>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="vendors/images/photo3.jpg" alt="">
+                                            <h3>John Doe</h3>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="vendors/images/photo4.jpg" alt="">
+                                            <h3>Renee I. Hansen</h3>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="vendors/images/img.jpg" alt="">
+                                            <h3>Vicki M. Coleman</h3>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="user-info-dropdown">
+                    <div class="dropdown">
+                        <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                            <span class="user-icon">
+                                <img src="vendors/images/photo1.jpg" alt="">
+                            </span>
+                            <span class="user-name">Welcome back {{ user.first_name }}</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                            <a class="dropdown-item" href="profile.html"><i class="dw dw-user1"></i> Profile</a>
+                            <a class="dropdown-item" href="profile.html"><i class="dw dw-settings2"></i> Setting</a>
+                            <a class="dropdown-item" href="faq.html"><i class="dw dw-help"></i> Help</a>
+                            <a class="dropdown-item" href="login.html"><i class="dw dw-logout"></i> Log Out</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="right-sidebar">
+            <div class="sidebar-title">
+                <h3 class="weight-600 font-16 text-blue">
+                    Layout Settings
+                    <span class="btn-block font-weight-400 font-12">User Interface Settings</span>
+                </h3>
+                <div class="close-sidebar" data-toggle="right-sidebar-close">
+                    <i class="icon-copy ion-close-round"></i>
+                </div>
+            </div>
+            <div class="right-sidebar-body customscroll">
+                <div class="right-sidebar-body-content">
+                    <h4 class="weight-600 font-18 pb-10">Header Background</h4>
+                    <div class="sidebar-btn-group pb-30 mb-10">
+                        <a href="javascript:void(0);" class="btn btn-outline-primary header-white active">White</a>
+                        <a href="javascript:void(0);" class="btn btn-outline-primary header-dark">Dark</a>
+                    </div>
+
+                    <h4 class="weight-600 font-18 pb-10">Sidebar Background</h4>
+                    <div class="sidebar-btn-group pb-30 mb-10">
+                        <a href="javascript:void(0);" class="btn btn-outline-primary sidebar-light ">White</a>
+                        <a href="javascript:void(0);" class="btn btn-outline-primary sidebar-dark active">Dark</a>
+                    </div>
+
+                    <h4 class="weight-600 font-18 pb-10">Menu Dropdown Icon</h4>
+                    <div class="sidebar-radio-group pb-10 mb-10">
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="sidebaricon-1" name="menu-dropdown-icon"
+                                class="custom-control-input" value="icon-style-1" checked="">
+                            <label class="custom-control-label" for="sidebaricon-1"><i
+                                    class="fa fa-angle-down"></i></label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="sidebaricon-2" name="menu-dropdown-icon"
+                                class="custom-control-input" value="icon-style-2">
+                            <label class="custom-control-label" for="sidebaricon-2"><i
+                                    class="ion-plus-round"></i></label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="sidebaricon-3" name="menu-dropdown-icon"
+                                class="custom-control-input" value="icon-style-3">
+                            <label class="custom-control-label" for="sidebaricon-3"><i
+                                    class="fa fa-angle-double-right"></i></label>
+                        </div>
+                    </div>
+
+                    <h4 class="weight-600 font-18 pb-10">Menu List Icon</h4>
+                    <div class="sidebar-radio-group pb-30 mb-10">
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="sidebariconlist-1" name="menu-list-icon"
+                                class="custom-control-input" value="icon-list-style-1" checked="">
+                            <label class="custom-control-label" for="sidebariconlist-1"><i
+                                    class="ion-minus-round"></i></label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="sidebariconlist-2" name="menu-list-icon"
+                                class="custom-control-input" value="icon-list-style-2">
+                            <label class="custom-control-label" for="sidebariconlist-2"><i class="fa fa-circle-o"
+                                    aria-hidden="true"></i></label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="sidebariconlist-3" name="menu-list-icon"
+                                class="custom-control-input" value="icon-list-style-3">
+                            <label class="custom-control-label" for="sidebariconlist-3"><i
+                                    class="dw dw-check"></i></label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="sidebariconlist-4" name="menu-list-icon"
+                                class="custom-control-input" value="icon-list-style-4" checked="">
+                            <label class="custom-control-label" for="sidebariconlist-4"><i
+                                    class="icon-copy dw dw-next-2"></i></label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="sidebariconlist-5" name="menu-list-icon"
+                                class="custom-control-input" value="icon-list-style-5">
+                            <label class="custom-control-label" for="sidebariconlist-5"><i
+                                    class="dw dw-fast-forward-1"></i></label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="sidebariconlist-6" name="menu-list-icon"
+                                class="custom-control-input" value="icon-list-style-6">
+                            <label class="custom-control-label" for="sidebariconlist-6"><i
+                                    class="dw dw-next"></i></label>
+                        </div>
+                    </div>
+
+                    <div class="reset-options pt-30 text-center">
+                        <button class="btn btn-danger" id="reset-settings">Reset Settings</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="left-side-bar">
+            <div class="brand-logo">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="" class="dark-logo">
+                    <img src="images/logo-night.png" alt="" class="light-logo">
+                </a>
+                <div class="close-sidebar" data-toggle="left-sidebar-close">
+                    <i class="ion-close-round"></i>
+                </div>
+            </div>
+            <div class="menu-block customscroll">
+                <div class="sidebar-menu">
+                    <ul id="accordion-menu">
+                        <li>
+                            <a href="shop.html" class="dropdown-toggle no-arrow">
+                                <span class="micon dw dw-shop"></span><span class="mtext">Shop</span>
+                            </a>
+
+                        </li>
+
+                        <li>
+                            <a href="#" class="dropdown-toggle no-arrow" data-section="my-collection">
+                                <span class="micon fa fa-bank"></span><span class="mtext">My Collection</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="invoice.html" class="dropdown-toggle no-arrow">
+                                <span class="micon fi-book-bookmark"></span><span class="mtext">Continue Reading</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="invoice.html" class="dropdown-toggle no-arrow">
+                                <span class="micon fa fa-bullhorn"></span><span class="mtext">New Releases</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="invoice.html" class="dropdown-toggle no-arrow">
+                                <span class="micon dw dw-shopping-cart1"></span><span class="mtext">Cart</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="invoice.html" class="dropdown-toggle no-arrow">
+                                <span class="micon fa fa-history"></span><span class="mtext">History</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="invoice.html" class="dropdown-toggle no-arrow">
+                                <span class="micon fa fa-heart"></span><span class="mtext">Favourite Author</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="dropdown-toggle no-arrow" data-section="my-books">
+                                <span class="micon dw dw-library"></span><span class="mtext">My Books</span>
+                            </a>
+                        </li>
+                        <li>
+                            <div class="dropdown-divider"></div>
+                        </li>
+                        <li>
+                            <div class="sidebar-small-cap">Extra</div>
+                        </li>
+                        <li>
+                            <a href="faq.html" target="_blank" class="dropdown-toggle no-arrow">
+                                <span class="micon dw dw-paper-plane1"></span>
+                                <span class="mtext">FAQs </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="faq.html" target="_blank" class="dropdown-toggle no-arrow">
+                                <span class="micon dw dw-paper-plane1"></span>
+                                <span class="mtext">Feedback </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="mobile-menu-overlay"></div>
+
+        <div class="main-container">
+            <div class="pd-ltr-20 xs-pd-20-10">
+                <div class="min-height-200px">
+                    <!-- Page Header -->
+                    <div class="page-header">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+                                <div class="title">
+                                    <h4>Shop</h4>
+                                </div>
+                                <nav aria-label="breadcrumb" role="navigation">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Shop</li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-wrap">
+                        <h4>Books</h4>
+                        <div class="product-list">
+                            <ul class="row" id="book-list">
+                                <!-- Books will be dynamically inserted here -->
+                            </ul>
+                        </div>
+
+                        <!-- Pagination for Books -->
+                        <div class="blog-pagination mb-30" id="pagination">
+                            <!-- Pagination buttons will be dynamically inserted here -->
+                        </div>
+                    </div>
+
+                    <!-- Authors Section -->
+                    {% if authors_page_obj %}
+                    <div class="container pd-0 mt-30">
+                        <h4>Authors Directory</h4>
+                        <div class="contact-directory-list">
+                            <ul class="row">
+                                {% for author in authors_page_obj %}
+                                <li class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                                    <div class="contact-directory-box">
+                                        <div class="contact-dire-info text-center">
+                                            <div class="contact-avatar">
+                                                <span>
+                                                    {% if author.profile_picture %}
+                                                    <img src="{{ author.profile_picture.url }}"
+                                                        alt="{{ author.username }}">
+                                                    {% else %}
+                                                    <img src="vendors/images/default-avatar.jpg" alt="Default Avatar">
+                                                    {% endif %}
+                                                </span>
+                                            </div>
+                                            <div class="contact-name">
+                                                <h4>{{ author.username }}</h4>
+                                                <p>{{ author.user_type|title }}</p>
+                                                <div class="work text-success"><i class="ion-android-person"></i>
+                                                    {{ author.user_type|title }}
+                                                </div>
+                                            </div>
+                                            <div class="contact-skill">
+                                                <span class="badge badge-pill">Age: {{ author.age }}</span>
+                                                <span class="badge badge-pill">Phone: {{ author.phone_number }}</span>
+                                                <span class="badge badge-pill">Address: {{ author.address }}</span>
+                                            </div>
+                                            <div class="profile-sort-desc">
+                                                {{ author.bio }}
+                                            </div>
+                                        </div>
+                                        <div class="view-contact">
+                                            <a href="">View Profile</a>
+                                        </div>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+                        <!-- Pagination for Authors -->
+                        <div class="blog-pagination mb-30">
+                            <div class="btn-toolbar justify-content-center mb-15">
+                                <div class="btn-group">
+                                    {% if authors_page_obj.has_previous %}
+                                    <a href="?author_page=1" class="btn btn-outline-primary prev"><i
+                                            class="fa fa-angle-double-left"></i></a>
+                                    <a href="?author_page={{ authors_page_obj.previous_page_number }}"
+                                        class="btn btn-outline-primary prev"><i class="fa fa-angle-left"></i></a>
+                                    {% endif %}
+
+                                    {% if authors_page_obj.number > 3 %}
+                                    <a href="?author_page=1" class="btn btn-outline-primary">1</a>
+                                    <span class="btn btn-outline-primary">...</span>
+                                    {% endif %}
+
+                                    {% for num in authors_page_obj.paginator.page_range %}
+                                    {% if num > authors_page_obj.number|add:'-3' and num <
+                                        authors_page_obj.number|add:'3' %} {% if authors_page_obj.number==num %} <span
+                                        class="btn btn-primary current">{{ num }}</span>
+                                        {% else %}
+                                        <a href="?author_page={{ num }}" class="btn btn-outline-primary">{{ num }}</a>
+                                        {% endif %}
+                                        {% endif %}
+                                        {% endfor %}
+
+                                        {% if authors_page_obj.number < authors_page_obj.paginator.num_pages|add:'-2' %}
+                                            <span class="btn btn-outline-primary">...</span>
+                                            <a href="?author_page={{ authors_page_obj.paginator.num_pages }}"
+                                                class="btn btn-outline-primary">{{ authors_page_obj.paginator.num_pages }}</a>
+                                            {% endif %}
+
+                                            {% if authors_page_obj.has_next %}
+                                            <a href="?author_page={{ authors_page_obj.next_page_number }}"
+                                                class="btn btn-outline-primary next"><i
+                                                    class="fa fa-angle-right"></i></a>
+                                            <a href="?author
+_page={{ authors_page_obj.paginator.num_pages }}" class="btn btn-outline-primary next"><i
+                                                    class="fa fa-angle-double-right"></i></a>
+                                            {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    <!-- Readers Section -->
+                    {% if readers_page_obj %}
+                    <div class="container pd-0 mt-30">
+                        <h4>Readers Directory</h4>
+                        <div class="contact-directory-list">
+                            <ul class="row">
+                                {% for reader in readers_page_obj %}
+                                <li class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                                    <div class="contact-directory-box">
+                                        <div class="contact-dire-info text-center">
+                                            <div class="contact-avatar">
+                                                <span>
+                                                    {% if reader.profile_picture %}
+                                                    <img src="{{ reader.profile_picture.url }}"
+                                                        alt="{{ reader.username }}">
+                                                    {% else %}
+                                                    <img src="vendors/images/default-avatar.jpg" alt="Default Avatar">
+                                                    {% endif %}
+                                                </span>
+                                            </div>
+                                            <div class="contact-name">
+                                                <h4>{{ reader.username }}</h4>
+                                                <p>{{ reader.user_type|title }}</p>
+                                                <div class="work text-success"><i class="ion-android-person"></i>
+                                                    {{ reader.user_type|title }}
+                                                </div>
+                                            </div>
+                                            <div class="contact-skill">
+                                                <span class="badge badge-pill">Age: {{ reader.age }}</span>
+                                                <span class="badge badge-pill">Phone: {{ reader.phone_number }}</span>
+                                                <span class="badge badge-pill">Address: {{ reader.address }}</span>
+                                            </div>
+                                            <div class="profile-sort-desc">
+                                                {{ reader.bio }}
+                                            </div>
+                                        </div>
+                                        <div class="view-contact">
+                                            <a href="">View Profile</a>
+                                        </div>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+                        <!-- Pagination for Readers -->
+                        <div class="blog-pagination mb-30">
+                            <div class="btn-toolbar justify-content-center mb-15">
+                                <div class="btn-group">
+                                    {% if readers_page_obj.has_previous %}
+                                    <a href="?reader_page=1" class="btn btn-outline-primary prev"><i
+                                            class="fa fa-angle-double-left"></i></a>
+                                    <a href="?reader_page={{ readers_page_obj.previous_page_number }}"
+                                        class="btn btn-outline-primary prev"><i class="fa fa-angle-left"></i></a>
+                                    {% endif %}
+
+                                    {% if readers_page_obj.number > 3 %}
+                                    <a href="?reader_page=1" class="btn btn-outline-primary">1</a>
+                                    <span class="btn btn-outline-primary">...</span>
+                                    {% endif %}
+
+                                    {% for num in readers_page_obj.paginator.page_range %}
+                                    {% if num > readers_page_obj.number|add:'-3' and num <
+                                        readers_page_obj.number|add:'3' %} {% if readers_page_obj.number==num %} <span
+                                        class="btn btn-primary current">{{ num }}</span>
+                                        {% else %}
+                                        <a href="?reader_page={{ num }}" class="btn btn-outline-primary">{{ num }}</a>
+                                        {% endif %}
+                                        {% endif %}
+                                        {% endfor %}
+
+                                        {% if readers_page_obj.number < readers_page_obj.paginator.num_pages|add:'-2' %}
+                                            <span class="btn btn-outline-primary">...</span>
+                                            <a href="?reader_page={{ readers_page_obj.paginator.num_pages }}"
+                                                class="btn btn-outline-primary">{{ readers_page_obj.paginator.num_pages }}</a>
+                                            {% endif %}
+
+                                            {% if readers_page_obj.has_next %}
+                                            <a href="?reader_page={{ readers_page_obj.next_page_number }}"
+                                                class="btn btn-outline-primary next"><i
+                                                    class="fa fa-angle-right"></i></a>
+                                            <a href="?reader_page={{ readers_page_obj.paginator.num_pages }}"
+                                                class="btn btn-outline-primary next"><i
+                                                    class="fa fa-angle-double-right"></i></a>
+                                            {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <!-- Sellers Section -->
+                    {% if sellers_page_obj %}
+                    <div class="container pd-0 mt-30">
+                        <h4>Sellers Directory</h4>
+                        <div class="contact-directory-list">
+                            <ul class="row">
+                                {% for seller in sellers_page_obj %}
+                                <li class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                                    <div class="contact-directory-box">
+                                        <div class="contact-dire-info text-center">
+                                            <div class="contact-avatar">
+                                                <span>
+                                                    {% if seller.profile_picture %}
+                                                    <img src="{{ seller.profile_picture.url }}"
+                                                        alt="{{ seller.username }}">
+                                                    {% else %}
+                                                    <img src="vendors/images/default-avatar.jpg" alt="Default Avatar">
+                                                    {% endif %}
+                                                </span>
+                                            </div>
+                                            <div class="contact-name">
+                                                <h4>{{ seller.username }}</h4>
+                                                <p>{{ seller.user_type|title }}</p>
+                                                <div class="work text-success"><i class="ion-android-person"></i>
+                                                    {{ seller.user_type|title }}
+                                                </div>
+                                            </div>
+                                            <div class="contact-skill">
+                                                <span class="badge badge-pill">Age: {{ seller.age }}</span>
+                                                <span class="badge badge-pill">Phone: {{ seller.phone_number }}</span>
+                                                <span class="badge badge-pill">Address: {{ seller.address }}</span>
+                                            </div>
+                                            <div class="profile-sort-desc">
+                                                {{ seller.bio }}
+                                            </div>
+                                        </div>
+                                        <div class="view-contact">
+                                            <a href="">View Profile</a>
+                                        </div>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+                        <!-- Pagination for Sellers -->
+                        <div class="blog-pagination mb-30">
+                            <div class="btn-toolbar justify-content-center mb-15">
+                                <div class="btn-group">
+                                    {% if sellers_page_obj.has_previous %}
+                                    <a href="?seller_page=1" class="btn btn-outline-primary prev"><i
+                                            class="fa fa-angle-double-left"></i></a>
+                                    <a href="?seller_page={{ sellers_page_obj.previous_page_number }}"
+                                        class="btn btn-outline-primary prev"><i class="fa fa-angle-left"></i></a>
+                                    {% endif %}
+
+                                    {% if sellers_page_obj.number > 3 %}
+                                    <a href="?seller_page=1" class="btn btn-outline-primary">1</a>
+                                    <span class="btn btn-outline-primary">...</span>
+                                    {% endif %}
+
+                                    {% for num in sellers_page_obj.paginator.page_range %}
+                                    {% if num > sellers_page_obj.number|add:'-3' and num <
+                                        sellers_page_obj.number|add:'3' %} {% if sellers_page_obj.number==num %} <span
+                                        class="btn btn-primary current">{{ num }}</span>
+                                        {% else %}
+                                        <a href="?seller_page={{ num }}" class="btn btn-outline-primary">{{ num }}</a>
+                                        {% endif %}
+                                        {% endif %}
+                                        {% endfor %}
+
+                                        {% if sellers_page_obj.number < sellers_page_obj.paginator.num_pages|add:'-2' %}
+                                            <span class="btn btn-outline-primary">...</span>
+                                            <a href="?seller_page={{ sellers_page_obj.paginator.num_pages }}"
+                                                class="btn btn-outline-primary">{{ sellers_page_obj.paginator.num_pages }}</a>
+                                            {% endif %}
+
+                                            {% if sellers_page_obj.has_next %}
+                                            <a href="?seller_page={{ sellers_page_obj.next_page_number }}"
+                                                class="btn btn-outline-primary next"><i
+                                                    class="fa fa-angle-right"></i></a>
+                                            <a href="?seller_page={{ sellers_page_obj.paginator.num_pages }}"
+                                                class="btn btn-outline-primary next"><i
+                                                    class="fa fa-angle-double-right"></i></a>
+                                            {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- <div class="footer-wrap pd-20 mb-20 card-box">
+					DeskApp - Bootstrap 4 Admin Template By <a href="https://github.com/dropways" target="_blank">Ankit
+						Hingarajiya</a>
+				</div> -->
+
+        <!-- js -->
+        <script src="vendors/scripts/core.js"></script>
+        <script src="vendors/scripts/script.min.js"></script>
+        <script src="vendors/scripts/process.js"></script>
+        <script src="vendors/scripts/layout-settings.js"></script>
+        <script src="src/plugins/cropperjs/dist/cropper.js"></script>
+        <script src="src/plugins/jquery-steps/jquery.steps.js"></script>
+        <script src="vendors/scripts/steps-setting.js"></script>
+        <script src="src/plugins/dropzone/src/dropzone.js"></script>
+        <!-- <script src="src/plugins/bootstrap-select/bootstrap-select.min.js.map"></script> -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const bookListElem = document.getElementById('book-list');
+                const paginationElem = document.getElementById('pagination');
+
+                async function fetchBooks(page = 1) {
+                    try {
+                        const response = await fetch(`http://127.0.0.1:8000/kindle/books/?page=${page}`);
+
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! Status: ${response.status}`);
+                        }
+
+                        const data = await response.json();
+
+                        if (!data.results || !Array.isArray(data.results)) {
+                            throw new Error('Invalid data format');
+                        }
+
+                        bookListElem.innerHTML = '';
+                        paginationElem.innerHTML = '';
+
+                        data.results.forEach(book => {
+                            const bookItem = `
+                        <li class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="product-box">
+                                <div class="product-img">
+                                    <img src="${book.img_url}" alt="${book.title}" style="width: auto; height: 50%; margin-left:25%; padding:20px">
+                                </div>
+                                <div class="product-caption">
+                                    <h4>${book.title}</h4>
+                                    <p>by ${book.author}</p>
+                                    <p>${book.stars} Stars | $${book.price}</p>
+                                    <a href="${book.product_url}" class="btn btn-outline-primary" target="_blank">Read Now</a>
+                                    <a href="book-detail.html?book_id=${book.id}" class="btn btn-outline-primary">See More</a>
+                                </div>
+                            </div>
+                        </li>
+                    `;
+                            bookListElem.insertAdjacentHTML('beforeend', bookItem);
+                        });
+
+                        const totalPages = Math.ceil(data.count / 10);
+                        const currentPage = parseInt(page);
+
+                        if (totalPages > 1) {
+                            let paginationHTML = '';
+
+                            if (currentPage > 1) {
+                                paginationHTML += `<a href="#" class="btn btn-outline-primary" data-page="1">First</a>`;
+                                paginationHTML += `<a href="#" class="btn btn-outline-primary" data-page="${currentPage - 1}">Previous</a>`;
+                            }
+
+                            if (totalPages <= 6) {
+                                for (let i = 1; i <= totalPages; i++) {
+                                    paginationHTML += createPageButton(i, currentPage);
+                                }
+                            } else {
+                                if (currentPage <= 4) {
+                                    for (let i = 1; i <= 5; i++) {
+                                        paginationHTML += createPageButton(i, currentPage);
+                                    }
+                                    paginationHTML += `<span>...</span>`;
+                                    paginationHTML += createPageButton(totalPages - 2, currentPage);
+                                    paginationHTML += createPageButton(totalPages - 1, currentPage);
+                                    paginationHTML += createPageButton(totalPages, currentPage);
+                                } else if (currentPage >= totalPages - 3) {
+                                    paginationHTML += createPageButton(1, currentPage);
+                                    paginationHTML += createPageButton(2, currentPage);
+                                    paginationHTML += `<span>...</span>`;
+                                    for (let i = totalPages - 4; i <= totalPages; i++) {
+                                        paginationHTML += createPageButton(i, currentPage);
+                                    }
+                                } else {
+                                    paginationHTML += createPageButton(1, currentPage);
+                                    paginationHTML += createPageButton(2, currentPage);
+                                    paginationHTML += `<span>...</span>`;
+                                    for (let i = currentPage - 1; i <= currentPage + 1; i++) {
+                                        paginationHTML += createPageButton(i, currentPage);
+                                    }
+                                    paginationHTML += `<span>...</span>`;
+                                    paginationHTML += createPageButton(totalPages - 1, currentPage);
+                                    paginationHTML += createPageButton(totalPages, currentPage);
+                                }
+                            }
+
+                            if (currentPage < totalPages) {
+                                paginationHTML += `<a href="#" class="btn btn-outline-primary" data-page="${currentPage + 1}">Next</a>`;
+                                paginationHTML += `<a href="#" class="btn btn-outline-primary" data-page="${totalPages}">Last</a>`;
+                            }
+
+                            paginationElem.innerHTML = paginationHTML;
+
+                            document.querySelectorAll('[data-page]').forEach(button => {
+                                button.addEventListener('click', function (event) {
+                                    event.preventDefault();
+                                    const page = this.getAttribute('data-page');
+                                    fetchBooks(page);
+                                });
+                            });
+                        }
+                    } catch (error) {
+                        console.error('Error fetching books:', error);
+                        alert('Error fetching books. Please try again later.');
+                    }
+                }
+
+                function createPageButton(page, currentPage) {
+                    return page === currentPage
+                        ? `<a href="#" class="btn btn-outline-primary active">${page}</a>`
+                        : `<a href="#" class="btn btn-outline-primary" data-page="${page}">${page}</a>`;
+                }
+
+                fetchBooks();
+            });
+        </script>
+        <script>
+            window.addEventListener('DOMContentLoaded', function () {
+                var image = document.getElementById('image');
+                var cropBoxData;
+                var canvasData;
+                var cropper;
+
+                $('#modal').on('shown.bs.modal', function () {
+                    cropper = new Cropper(image, {
+                        autoCropArea: 0.5,
+                        dragMode: 'move',
+                        aspectRatio: 3 / 3,
+                        restore: false,
+                        guides: false,
+                        center: false,
+                        highlight: false,
+                        cropBoxMovable: false,
+                        cropBoxResizable: false,
+                        toggleDragModeOnDblclick: false,
+                        ready: function () {
+                            cropper.setCropBoxData(cropBoxData).setCanvasData(canvasData);
+                        }
+                    });
+                }).on('hidden.bs.modal', function () {
+                    cropBoxData = cropper.getCropBoxData();
+                    canvasData = cropper.getCanvasData();
+                    cropper.destroy();
+                });
+            });
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const sections = document.querySelectorAll('.sidebar-menu a');
+                const sectionTitle = document.getElementById('section-title');
+                const breadcrumbSection = document.getElementById('breadcrumb-section');
+
+                sections.forEach(section => {
+                    section.addEventListener('click', function (event) {
+                        event.preventDefault();
+                        const sectionId = section.getAttribute('data-section');
+
+                        // Hide all sections
+                        document.querySelectorAll('.section').forEach(sec => sec.style.display = 'none');
+
+                        // Show the clicked section
+                        const activeSection = document.getElementById(sectionId);
+                        if (activeSection) {
+                            activeSection.style.display = 'block';
+                        }
+
+                        // Update the header title and breadcrumb
+                        const sectionText = section.querySelector('.mtext').textContent;
+                        sectionTitle.textContent = sectionText;
+                        breadcrumbSection.textContent = sectionText;
+                    });
+                });
+
+                // Show the default section (Profile)
+                document.getElementById('profile').style.display = 'block';
+            });
+        </script>
+
+        <script>
+            console.log($('#genre').val());
+        </script>
+
+    </body>
+
+</html>

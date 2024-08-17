@@ -46,13 +46,18 @@ from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 from .models import Book
 from .serializers import BookSerializer
+from rest_framework.views import APIView
+from django.utils.dateparse import parse_date
 
-# ViewSet for managing books (list, create, update, delete)
+
 class BookViewSet(viewsets.ModelViewSet):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
     pagination_class = PageNumberPagination
+
+    def get_queryset(self):
+        return Book.objects.filter(user=self.request.user)
 
 # Fetch a specific book's details
 class BookDetailView(generics.RetrieveAPIView):
@@ -64,10 +69,29 @@ class BookDetailView(generics.RetrieveAPIView):
     def get_queryset(self):
         return Book.objects.filter(id=self.kwargs['pk'])
 
-# Upload a new book
-class UploadBookView(generics.CreateAPIView):
-    serializer_class = BookSerializer
+class UploadBookView(APIView):
     permission_classes = [IsAuthenticated]
 
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+    def post(self, request, *args, **kwargs):
+        data = request.data.copy()
+        
+        # Ensure date format is correct
+        if 'publish_date' in data:
+            publish_date_str = data['publish_date']
+            try:
+                parsed_date = parse_date(publish_date_str)
+                if parsed_date:
+                    data['publish_date'] = parsed_date
+                else:
+                    return Response({'success': False, 'message': 'Invalid date format. Use YYYY-MM-DD.'}, status=status.HTTP_400_BAD_REQUEST)
+            except ValueError:
+                return Response({'success': False, 'message': 'Invalid date format. Use YYYY-MM-DD.'}, status=status.HTTP_400_BAD_REQUEST)
+
+        # Add the user to the data
+        data['user'] = request.user.id
+        
+        serializer = BookSerializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({'success': True, 'redirect_url': '/success/'}, status=status.HTTP_201_CREATED)
+        return Response({'success': False, 'message': 'Error in form submission', 'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)

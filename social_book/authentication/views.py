@@ -78,7 +78,6 @@ class CustomUserViewSet(UserViewSet):
     serializer_class = CustomUserCreateSerializer
     queryset = CustomUser.objects.all()
 
-# Profile fetching and updating
 class ProfileView(generics.RetrieveUpdateAPIView):
     serializer_class = ProfileEditSerializer
     permission_classes = [IsAuthenticated]
@@ -88,7 +87,7 @@ class ProfileView(generics.RetrieveUpdateAPIView):
 
     def perform_update(self, serializer):
         serializer.save()
-
+        
 # Fetch users based on user type (author, reader, seller)
 class UserTypeView(generics.ListAPIView):
     serializer_class = CustomUserSerializer

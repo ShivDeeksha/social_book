@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>User Profile</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <div class="profile-container">
+            <div class="profile-card">
+                <div class="profile-header">
+                    <img src="images/bg2.jpg" alt="Profile Background" class="profile-bg">
+                    <div class="profile-info">
+                        <img src="images/avatar.jpg" alt="User Avatar" class="avatar" id="avatarImage">
+                        <h2 id="userName"></h2>
+                        <p class="email" id="userEmail"></p>
+                    </div>
+                </div>
+                <div class="profile-details">
+                    <h3>Personal Information</h3>
+                    <ul>
+                        <li><strong>Phone Number:</strong> <span id="userPhone"></span></li>
+                        <li><strong>Address:</strong> <span id="userAddress"></span></li>
+                        <li><strong>Joined:</strong> <span id="userJoined"></span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", async function () {
+                try {
+                    const response = await fetch('http://127.0.0.1:8000/auth/profile/', {
+                        method: 'GET',
+                        headers: {
+                            'Authorization': `Bearer ${localStorage.getItem('access_token')}` // Use stored JWT token
+                        }
+                    });
+
+                    if (response.ok) {
+                        const userData = await response.json();
+                        // Populate profile page with user data
+                        document.getElementById('userName').textContent = `${userData.first_name} ${userData.last_name}`;
+                        document.getElementById('userEmail').textContent = userData.email;
+                        document.getElementById('userPhone').textContent = userData.phone_number;
+                        document.getElementById('userAddress').textContent = userData.address;
+                        document.getElementById('userJoined').textContent = new Date(userData.date_joined).toLocaleDateString();
+                    } else {
+                        alert('Failed to load user profile.');
+                    }
+                } catch (error) {
+                    alert('An error occurred while fetching the profile: ' + error.message);
+                }
+            });
+        </script>
+        
+    </body>
+
+</html>

@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>User Sign Up</title>
+        <link rel="stylesheet" href="{% static 'style.css' %}">
+    </head>
+
+    <body>
+        <div class="overlay"></div>
+        <div class="wrapper2">
+            <form id="signupForm" method="post" action="{% url 'signup' %}">
+                {% csrf_token %}
+                <h2>Sign Up</h2>
+                <div class="input-field">
+                    {{ form.first_name }}
+                    <label>First Name</label>
+                </div>
+                <div class="input-field">
+                    {{ form.last_name }}
+                    <label>Last Name</label>
+                </div>
+                <div class="input-field">
+                    {{ form.phone_number }}
+                    <label>Phone Number</label>
+                </div>
+                <div class="input-field">
+                    {{ form.address }}
+                    <label>Address</label>
+                </div>
+                <div class="input-field">
+                    {{ form.username.label_tag }}
+                    {{ form.username }}
+                </div>
+                <div class="input-field">
+                    {{ form.email }}
+                    <label>Enter your email</label>
+                </div>
+                <div class="input-field">
+                    {{ form.password1 }}
+                    <label>Enter your password</label>
+                </div>
+                <div class="input-field">
+                    {{ form.password2 }}
+                    <label>Confirm Password</label>
+                </div>
+                <button type="submit">Sign Up</button>
+                <div class="register">
+                    <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+                </div>
+            </form>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                // Get errors from the template context
+                const errors = JSON.parse('{{ errors|escapejs }}'); // Use escapejs filter for safety
+
+                if (errors) {
+                    for (const [field, messages] of Object.entries(errors)) {
+                        for (const message of messages) {
+                            alert(`${field}: ${message.message}`);
+                        }
+                    }
+                }
+            });
+        </script>
+    </body>
+
+</html>

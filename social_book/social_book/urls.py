@@ -23,6 +23,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', include('authentication.urls')),  # Routes to authentication app
     path('books/', include('books.urls')),  # Routes to books app
+    path('otp/', include('otp.urls')),
+    path('kindle/', include('kindle.urls')),
+
 ]
 
 if settings.DEBUG:
