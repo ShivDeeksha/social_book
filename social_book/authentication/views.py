@@ -71,7 +71,9 @@ from djoser.views import UserViewSet
 from .serializers import CustomUserCreateSerializer, CustomUserSerializer, ProfileEditSerializer
 from .models import CustomUser
 from books.models import Book
+from rest_framework.pagination import PageNumberPagination
 from books.serializers import BookSerializer
+from rest_framework.permissions import AllowAny
 
 # Sign up using Djoser
 class CustomUserViewSet(UserViewSet):
@@ -88,10 +90,17 @@ class ProfileView(generics.RetrieveUpdateAPIView):
     def perform_update(self, serializer):
         serializer.save()
         
-# Fetch users based on user type (author, reader, seller)
+class CustomUserPagination(PageNumberPagination):
+    page_size = 10
+    page_size_query_param = 'page_size'
+    max_page_size = 100
+    permission_classes = [AllowAny]
+
+
 class UserTypeView(generics.ListAPIView):
     serializer_class = CustomUserSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
+    pagination_class = CustomUserPagination
 
     def get_queryset(self):
         user_type = self.kwargs['user_type']

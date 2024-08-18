@@ -403,19 +403,19 @@
 											</div>
 
 										</div>
-										<div class="form-group mt-3">
+										<!-- <div class="form-group mt-3">
 											<button id="verify-button" data-backdrop="static" data-toggle="modal"
 												data-target="#verification-modal" type="button"
 												class="btn btn-primary">Verify Profile</button>
-										</div>
+										</div> -->
 										<div id="verification-status" class="alert alert-success"
 											style="display: none;">
 											Account verified
 										</div>
 
 
-
-										<!-- Verification Modal -->
+										<!-- 
+										Verification Modal
 										<div class="modal fade" id="verification-modal" tabindex="-1" role="dialog"
 											aria-labelledby="verification-modal-label" aria-hidden="true">
 											<div class="modal-dialog modal-dialog-centered">
@@ -454,7 +454,7 @@
 											</div>
 										</div>
 
-										<!-- Success Modal -->
+										Success Modal
 										<div class="modal fade" id="success-modal" tabindex="-1" role="dialog"
 											aria-labelledby="success-modal-label" aria-hidden="true">
 											<div class="modal-dialog modal-dialog-centered">
@@ -471,7 +471,7 @@
 													</div>
 												</div>
 											</div>
-										</div>
+										</div> -->
 
 									</ul>
 								</div>
@@ -510,7 +510,7 @@
 
 																	<div class="form-group pb-20">
 																		<label for="bio">Bio</label>
-																		<textarea id="bio" name="bio"
+																		<textarea id="bioform" name="bio"
 																			class="form-control" rows="4"></textarea>
 																	</div>
 
@@ -540,7 +540,8 @@
 																				<label for="username">Username</label>
 																				<input type="text" id="username"
 																					name="username"
-																					class="form-control form-control-lg">
+																					class="form-control form-control-lg"
+																					disabled>
 																			</div>
 																		</div>
 																		<div class="col-lg-4 pb-20">
@@ -1750,7 +1751,7 @@
 						const userEmailElem = document.getElementById('userEmail');
 						const userPhoneElem = document.getElementById('userPhone');
 						const userAddressElem = document.getElementById('userAddress');
-						const userBioElem = document.getElementById('bio');
+						const userBioElem = document.getElementById('bioform');
 						const userAgeElem = document.getElementById('userAge');
 						const userTypeElem = document.getElementById('userType');
 						const verificationStatusElem = document.getElementById('verification-status');
@@ -1782,12 +1783,47 @@
 
 		</script>
 		<script>
+			document.addEventListener("DOMContentLoaded", async function () {
+				await refreshTokenIfNeeded();
+
+				try {
+					const response = await fetch('http://127.0.0.1:8000/auth/profile/', {
+						method: 'GET',
+						headers: {
+							'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+						}
+					});
+
+					if (response.ok) {
+						const userData = await response.json();
+
+						// Populate form fields
+						document.getElementById('first_name').value = userData.first_name || '';
+						document.getElementById('last_name').value = userData.last_name || '';
+						document.getElementById('username').value = userData.username || '';
+						document.getElementById('email').value = userData.email || '';
+						document.getElementById('bioform').value = userData.bio || '';
+						document.getElementById('address').value = userData.address || '';
+						document.getElementById('birth_date').value = userData.birth_date || '';
+						document.getElementById('phone_number').value = userData.phone_number || '';
+
+						// Disable the username field to prevent editing
+						document.getElementById('username').disabled = true;
+
+					} else {
+						alert('Failed to load user profile.');
+					}
+				} catch (error) {
+					alert('An error occurred while fetching the profile: ' + error.message);
+				}
+			});
 			document.addEventListener("DOMContentLoaded", () => {
 				const form = document.getElementById('profileForm');
 
 				form.addEventListener('submit', async (event) => {
 					event.preventDefault(); // Prevent default form submission
-
+					const usernameInput = document.getElementById('username');
+					usernameInput.disabled = false;
 					// Gather form data
 					const formData = new FormData(form);
 					const data = {
@@ -1801,7 +1837,7 @@
 						phone_number: formData.get('phone_number') || '', // Add this if required
 						user_type: formData.get('user_type') || '' // Add this if required
 					};
-
+					usernameInput.disabled = true;
 					console.log('Form data:', data); // Debugging
 
 					try {
@@ -1832,7 +1868,7 @@
 		</script>
 
 
-
+		<!-- 
 		<script>
 			document.addEventListener('DOMContentLoaded', () => {
 				const requestOtpBtn = document.getElementById('request-otp-btn');
@@ -1913,11 +1949,11 @@
 					}
 				});
 			});
-		</script>
+		</script> -->
 
 		<script>
 			document.addEventListener('DOMContentLoaded', function () {
-				const token = localStorage.getItem('access_token');  // Assuming you store the token in localStorage
+				const token = localStorage.getItem('access_token');
 
 				if (!token) {
 					alert("User not authenticated.");
@@ -1935,13 +1971,13 @@
 					})
 						.then(response => response.json())
 						.then(data => {
-							if (data.length === 0) {
+							const books = data.results;  // Access the books within the `results` array
+							if (books.length === 0) {
 								alert('No books uploaded yet.');
-								// Show the upload book section within "My Books"
 								document.querySelector('#upload').classList.add('show', 'active');
 								document.querySelector('#books').classList.remove('show', 'active');
 							} else {
-								renderBooks(data);  // Call a function to render books
+								renderBooks(books);  // Render the books array
 							}
 						})
 						.catch(error => console.error('Error:', error));
@@ -1959,22 +1995,23 @@
 
 					books.forEach(book => {
 						const bookItem = `
-							<li class="col-lg-4 col-md-6 col-sm-12">
-								<div class="product-box">
-									<div class="producct-img"><img src="${book.image}" alt="${book.title}"></div>
-									<div class="product-caption">
-										<h4><a href="#">${book.title}</a></h4>
-										<div class="price"><ins>$${book.cost}</ins></div>
-										<a href="#" class="btn btn-outline-primary">Read More</a>
-									</div>
-								</div>
-							</li>
-						`;
+                    <li class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="product-box">
+                            <div class="producct-img"><img src="${book.image}" alt="${book.title}"></div>
+                            <div class="product-caption">
+                                <h4><a href="#">${book.title}</a></h4>
+                                <div class="price"><ins>$${book.cost}</ins></div>
+                                <a href="#" class="btn btn-outline-primary">Read More</a>
+                            </div>
+                        </div>
+                    </li>
+                `;
 						bookContainer.innerHTML += bookItem;
 					});
 				}
 			});
 		</script>
+
 
 		<script>
 			window.addEventListener('DOMContentLoaded', function () {

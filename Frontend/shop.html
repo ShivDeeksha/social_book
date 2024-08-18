@@ -345,276 +345,40 @@
                     </div>
 
                     <!-- Authors Section -->
-                    {% if authors_page_obj %}
-                    <div class="container pd-0 mt-30">
+                    <div id="authors-section" class="container pd-0 mt-30">
                         <h4>Authors Directory</h4>
                         <div class="contact-directory-list">
-                            <ul class="row">
-                                {% for author in authors_page_obj %}
-                                <li class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                                    <div class="contact-directory-box">
-                                        <div class="contact-dire-info text-center">
-                                            <div class="contact-avatar">
-                                                <span>
-                                                    {% if author.profile_picture %}
-                                                    <img src="{{ author.profile_picture.url }}"
-                                                        alt="{{ author.username }}">
-                                                    {% else %}
-                                                    <img src="vendors/images/default-avatar.jpg" alt="Default Avatar">
-                                                    {% endif %}
-                                                </span>
-                                            </div>
-                                            <div class="contact-name">
-                                                <h4>{{ author.username }}</h4>
-                                                <p>{{ author.user_type|title }}</p>
-                                                <div class="work text-success"><i class="ion-android-person"></i>
-                                                    {{ author.user_type|title }}
-                                                </div>
-                                            </div>
-                                            <div class="contact-skill">
-                                                <span class="badge badge-pill">Age: {{ author.age }}</span>
-                                                <span class="badge badge-pill">Phone: {{ author.phone_number }}</span>
-                                                <span class="badge badge-pill">Address: {{ author.address }}</span>
-                                            </div>
-                                            <div class="profile-sort-desc">
-                                                {{ author.bio }}
-                                            </div>
-                                        </div>
-                                        <div class="view-contact">
-                                            <a href="">View Profile</a>
-                                        </div>
-                                    </div>
-                                </li>
-                                {% endfor %}
+                            <ul id="authors-list" class="row">
+                                <!-- Authors will be dynamically inserted here -->
                             </ul>
                         </div>
-
                         <!-- Pagination for Authors -->
-                        <div class="blog-pagination mb-30">
-                            <div class="btn-toolbar justify-content-center mb-15">
-                                <div class="btn-group">
-                                    {% if authors_page_obj.has_previous %}
-                                    <a href="?author_page=1" class="btn btn-outline-primary prev"><i
-                                            class="fa fa-angle-double-left"></i></a>
-                                    <a href="?author_page={{ authors_page_obj.previous_page_number }}"
-                                        class="btn btn-outline-primary prev"><i class="fa fa-angle-left"></i></a>
-                                    {% endif %}
-
-                                    {% if authors_page_obj.number > 3 %}
-                                    <a href="?author_page=1" class="btn btn-outline-primary">1</a>
-                                    <span class="btn btn-outline-primary">...</span>
-                                    {% endif %}
-
-                                    {% for num in authors_page_obj.paginator.page_range %}
-                                    {% if num > authors_page_obj.number|add:'-3' and num <
-                                        authors_page_obj.number|add:'3' %} {% if authors_page_obj.number==num %} <span
-                                        class="btn btn-primary current">{{ num }}</span>
-                                        {% else %}
-                                        <a href="?author_page={{ num }}" class="btn btn-outline-primary">{{ num }}</a>
-                                        {% endif %}
-                                        {% endif %}
-                                        {% endfor %}
-
-                                        {% if authors_page_obj.number < authors_page_obj.paginator.num_pages|add:'-2' %}
-                                            <span class="btn btn-outline-primary">...</span>
-                                            <a href="?author_page={{ authors_page_obj.paginator.num_pages }}"
-                                                class="btn btn-outline-primary">{{ authors_page_obj.paginator.num_pages }}</a>
-                                            {% endif %}
-
-                                            {% if authors_page_obj.has_next %}
-                                            <a href="?author_page={{ authors_page_obj.next_page_number }}"
-                                                class="btn btn-outline-primary next"><i
-                                                    class="fa fa-angle-right"></i></a>
-                                            <a href="?author
-_page={{ authors_page_obj.paginator.num_pages }}" class="btn btn-outline-primary next"><i
-                                                    class="fa fa-angle-double-right"></i></a>
-                                            {% endif %}
-                                </div>
-                            </div>
-                        </div>
+                        <div id="authors-pagination" class="blog-pagination mb-30"></div>
                     </div>
-                    {% endif %}
+
                     <!-- Readers Section -->
-                    {% if readers_page_obj %}
-                    <div class="container pd-0 mt-30">
+                    <div id="readers-section" class="container pd-0 mt-30">
                         <h4>Readers Directory</h4>
                         <div class="contact-directory-list">
-                            <ul class="row">
-                                {% for reader in readers_page_obj %}
-                                <li class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                                    <div class="contact-directory-box">
-                                        <div class="contact-dire-info text-center">
-                                            <div class="contact-avatar">
-                                                <span>
-                                                    {% if reader.profile_picture %}
-                                                    <img src="{{ reader.profile_picture.url }}"
-                                                        alt="{{ reader.username }}">
-                                                    {% else %}
-                                                    <img src="vendors/images/default-avatar.jpg" alt="Default Avatar">
-                                                    {% endif %}
-                                                </span>
-                                            </div>
-                                            <div class="contact-name">
-                                                <h4>{{ reader.username }}</h4>
-                                                <p>{{ reader.user_type|title }}</p>
-                                                <div class="work text-success"><i class="ion-android-person"></i>
-                                                    {{ reader.user_type|title }}
-                                                </div>
-                                            </div>
-                                            <div class="contact-skill">
-                                                <span class="badge badge-pill">Age: {{ reader.age }}</span>
-                                                <span class="badge badge-pill">Phone: {{ reader.phone_number }}</span>
-                                                <span class="badge badge-pill">Address: {{ reader.address }}</span>
-                                            </div>
-                                            <div class="profile-sort-desc">
-                                                {{ reader.bio }}
-                                            </div>
-                                        </div>
-                                        <div class="view-contact">
-                                            <a href="">View Profile</a>
-                                        </div>
-                                    </div>
-                                </li>
-                                {% endfor %}
+                            <ul id="readers-list" class="row">
+                                <!-- Readers will be dynamically inserted here -->
                             </ul>
                         </div>
-
                         <!-- Pagination for Readers -->
-                        <div class="blog-pagination mb-30">
-                            <div class="btn-toolbar justify-content-center mb-15">
-                                <div class="btn-group">
-                                    {% if readers_page_obj.has_previous %}
-                                    <a href="?reader_page=1" class="btn btn-outline-primary prev"><i
-                                            class="fa fa-angle-double-left"></i></a>
-                                    <a href="?reader_page={{ readers_page_obj.previous_page_number }}"
-                                        class="btn btn-outline-primary prev"><i class="fa fa-angle-left"></i></a>
-                                    {% endif %}
-
-                                    {% if readers_page_obj.number > 3 %}
-                                    <a href="?reader_page=1" class="btn btn-outline-primary">1</a>
-                                    <span class="btn btn-outline-primary">...</span>
-                                    {% endif %}
-
-                                    {% for num in readers_page_obj.paginator.page_range %}
-                                    {% if num > readers_page_obj.number|add:'-3' and num <
-                                        readers_page_obj.number|add:'3' %} {% if readers_page_obj.number==num %} <span
-                                        class="btn btn-primary current">{{ num }}</span>
-                                        {% else %}
-                                        <a href="?reader_page={{ num }}" class="btn btn-outline-primary">{{ num }}</a>
-                                        {% endif %}
-                                        {% endif %}
-                                        {% endfor %}
-
-                                        {% if readers_page_obj.number < readers_page_obj.paginator.num_pages|add:'-2' %}
-                                            <span class="btn btn-outline-primary">...</span>
-                                            <a href="?reader_page={{ readers_page_obj.paginator.num_pages }}"
-                                                class="btn btn-outline-primary">{{ readers_page_obj.paginator.num_pages }}</a>
-                                            {% endif %}
-
-                                            {% if readers_page_obj.has_next %}
-                                            <a href="?reader_page={{ readers_page_obj.next_page_number }}"
-                                                class="btn btn-outline-primary next"><i
-                                                    class="fa fa-angle-right"></i></a>
-                                            <a href="?reader_page={{ readers_page_obj.paginator.num_pages }}"
-                                                class="btn btn-outline-primary next"><i
-                                                    class="fa fa-angle-double-right"></i></a>
-                                            {% endif %}
-                                </div>
-                            </div>
-                        </div>
+                        <div id="readers-pagination" class="blog-pagination mb-30"></div>
                     </div>
-                    {% endif %}
 
                     <!-- Sellers Section -->
-                    {% if sellers_page_obj %}
-                    <div class="container pd-0 mt-30">
+                    <div id="sellers-section" class="container pd-0 mt-30">
                         <h4>Sellers Directory</h4>
                         <div class="contact-directory-list">
-                            <ul class="row">
-                                {% for seller in sellers_page_obj %}
-                                <li class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                                    <div class="contact-directory-box">
-                                        <div class="contact-dire-info text-center">
-                                            <div class="contact-avatar">
-                                                <span>
-                                                    {% if seller.profile_picture %}
-                                                    <img src="{{ seller.profile_picture.url }}"
-                                                        alt="{{ seller.username }}">
-                                                    {% else %}
-                                                    <img src="vendors/images/default-avatar.jpg" alt="Default Avatar">
-                                                    {% endif %}
-                                                </span>
-                                            </div>
-                                            <div class="contact-name">
-                                                <h4>{{ seller.username }}</h4>
-                                                <p>{{ seller.user_type|title }}</p>
-                                                <div class="work text-success"><i class="ion-android-person"></i>
-                                                    {{ seller.user_type|title }}
-                                                </div>
-                                            </div>
-                                            <div class="contact-skill">
-                                                <span class="badge badge-pill">Age: {{ seller.age }}</span>
-                                                <span class="badge badge-pill">Phone: {{ seller.phone_number }}</span>
-                                                <span class="badge badge-pill">Address: {{ seller.address }}</span>
-                                            </div>
-                                            <div class="profile-sort-desc">
-                                                {{ seller.bio }}
-                                            </div>
-                                        </div>
-                                        <div class="view-contact">
-                                            <a href="">View Profile</a>
-                                        </div>
-                                    </div>
-                                </li>
-                                {% endfor %}
+                            <ul id="sellers-list" class="row">
+                                <!-- Sellers will be dynamically inserted here -->
                             </ul>
                         </div>
-
                         <!-- Pagination for Sellers -->
-                        <div class="blog-pagination mb-30">
-                            <div class="btn-toolbar justify-content-center mb-15">
-                                <div class="btn-group">
-                                    {% if sellers_page_obj.has_previous %}
-                                    <a href="?seller_page=1" class="btn btn-outline-primary prev"><i
-                                            class="fa fa-angle-double-left"></i></a>
-                                    <a href="?seller_page={{ sellers_page_obj.previous_page_number }}"
-                                        class="btn btn-outline-primary prev"><i class="fa fa-angle-left"></i></a>
-                                    {% endif %}
-
-                                    {% if sellers_page_obj.number > 3 %}
-                                    <a href="?seller_page=1" class="btn btn-outline-primary">1</a>
-                                    <span class="btn btn-outline-primary">...</span>
-                                    {% endif %}
-
-                                    {% for num in sellers_page_obj.paginator.page_range %}
-                                    {% if num > sellers_page_obj.number|add:'-3' and num <
-                                        sellers_page_obj.number|add:'3' %} {% if sellers_page_obj.number==num %} <span
-                                        class="btn btn-primary current">{{ num }}</span>
-                                        {% else %}
-                                        <a href="?seller_page={{ num }}" class="btn btn-outline-primary">{{ num }}</a>
-                                        {% endif %}
-                                        {% endif %}
-                                        {% endfor %}
-
-                                        {% if sellers_page_obj.number < sellers_page_obj.paginator.num_pages|add:'-2' %}
-                                            <span class="btn btn-outline-primary">...</span>
-                                            <a href="?seller_page={{ sellers_page_obj.paginator.num_pages }}"
-                                                class="btn btn-outline-primary">{{ sellers_page_obj.paginator.num_pages }}</a>
-                                            {% endif %}
-
-                                            {% if sellers_page_obj.has_next %}
-                                            <a href="?seller_page={{ sellers_page_obj.next_page_number }}"
-                                                class="btn btn-outline-primary next"><i
-                                                    class="fa fa-angle-right"></i></a>
-                                            <a href="?seller_page={{ sellers_page_obj.paginator.num_pages }}"
-                                                class="btn btn-outline-primary next"><i
-                                                    class="fa fa-angle-double-right"></i></a>
-                                            {% endif %}
-                                </div>
-                            </div>
-                        </div>
+                        <div id="sellers-pagination" class="blog-pagination mb-30"></div>
                     </div>
-                    {% endif %}
                 </div>
             </div>
         </div>
@@ -783,6 +547,80 @@ _page={{ authors_page_obj.paginator.num_pages }}" class="btn btn-outline-primary
             });
         </script>
         <script>
+            const endpoints = {
+                authors: 'http://localhost:8000/auth/users/type/author/',
+                readers: 'http://localhost:8000/auth/users/type/reader/',
+                sellers: 'http://localhost:8000/auth/users/type/seller/',
+            };
+
+            const currentPage = {
+                authors: 1,
+                readers: 1,
+                sellers: 1,
+            };
+
+            function fetchUsers(userType, page = 1) {
+                fetch(`${endpoints[userType]}?page=${page}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        renderUsers(userType, data.results);
+                        renderPagination(userType, data);
+                    });
+            }
+
+            function renderUsers(userType, users) {
+                const listElement = document.getElementById(`${userType}-list`);
+                listElement.innerHTML = users.map(user => `
+                            <li class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                                <div class="contact-directory-box">
+                                    <div class="contact-dire-info text-center">
+                                        <div class="contact-avatar">
+                                            <span>
+                                                <img src="${user.profile_picture || 'vendors/images/photo1.jpg'}" alt="${user.username}">
+                                            </span>
+                                        </div>
+                                        <div class="contact-name">
+                                            <h4>${user.username}</h4>
+                                            <p>${user.user_type.charAt(0).toUpperCase() + user.user_type.slice(1)}</p>
+                                            <div class="work text-success"><i class="ion-android-person"></i> ${user.user_type.charAt(0).toUpperCase() + user.user_type.slice(1)}</div>
+                                        </div>
+                                        <div class="contact-skill">
+                                            <span class="badge badge-pill">Age: ${user.age}</span>
+                                            <span class="badge badge-pill">Phone: ${user.phone_number}</span>
+                                            <span class="badge badge-pill">Address: ${user.address}</span>
+                                        </div>
+                                        <div class="profile-sort-desc">${user.bio}</div>
+                                    </div>
+                                    
+                                </div>
+                            </li>
+                        `).join('');
+            }
+
+            function renderPagination(userType, data) {
+                const paginationElement = document.getElementById(`${userType}-pagination`);
+                let paginationHTML = '';
+
+                if (data.previous) {
+                    paginationHTML += `<button onclick="fetchUsers('${userType}', ${currentPage[userType] - 1})">Previous</button>`;
+                }
+
+                paginationHTML += `<span>Page ${currentPage[userType]} of ${data.total_pages}</span>`;
+
+                if (data.next) {
+                    paginationHTML += `<button onclick="fetchUsers('${userType}', ${currentPage[userType] + 1})">Next</button>`;
+                }
+
+                paginationElement.innerHTML = paginationHTML;
+            }
+
+            document.addEventListener('DOMContentLoaded', () => {
+                fetchUsers('authors');
+                fetchUsers('readers');
+                fetchUsers('sellers');
+            });
+        </script>
+        <!-- <script>
             document.addEventListener('DOMContentLoaded', function () {
                 const sections = document.querySelectorAll('.sidebar-menu a');
                 const sectionTitle = document.getElementById('section-title');
@@ -812,7 +650,7 @@ _page={{ authors_page_obj.paginator.num_pages }}" class="btn btn-outline-primary
                 // Show the default section (Profile)
                 document.getElementById('profile').style.display = 'block';
             });
-        </script>
+        </script> -->
 
         <script>
             console.log($('#genre').val());

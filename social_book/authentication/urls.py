@@ -19,4 +19,7 @@ urlpatterns = [
     path('', include('djoser.urls.jwt')),  
     path('profile/', ProfileView.as_view(), name='profile'),
     path('users/type/<str:user_type>/', UserTypeView.as_view(), name='user_type'),
+     path('users/authors/', UserTypeView.as_view(), {'user_type': 'author'}, name='author_users'),
+    path('users/readers/', UserTypeView.as_view(), {'user_type': 'reader'}, name='reader_users'),
+    path('users/sellers/', UserTypeView.as_view(), {'user_type': 'seller'}, name='seller_users'),
 ]

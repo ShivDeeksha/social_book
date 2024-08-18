@@ -15,6 +15,7 @@ class CustomUser(AbstractUser):
     public_visibility = models.BooleanField(default=True)
     age = models.IntegerField(editable=False, null=True)
     bio = models.CharField(max_length=500,default="This is my bio.")
+    is_verified = models.BooleanField(default=False)
 
     groups = models.ManyToManyField(
         Group,

@@ -7,7 +7,7 @@ from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 
 class KindleBookListView(generics.ListAPIView):
-    queryset = KindleBook.objects.all()
+    queryset = KindleBook.objects.all().order_by('id')   
     serializer_class = KindleBookSerializer
     pagination_class = PageNumberPagination
     permission_classes = [AllowAny]
