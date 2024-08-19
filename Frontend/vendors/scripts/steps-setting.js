@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (response.ok) {
                     const result = await response.json();
                     if (result.success) {
-                        window.location.href = result.redirect_url;
+                        $('#success-modal').modal('show');
                     } else {
                         alert('Error: ' + result.message);
                     }

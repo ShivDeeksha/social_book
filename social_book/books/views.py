@@ -41,7 +41,7 @@
 #     recent_books = Book.objects.exclude(id=book_id).order_by('-publish_date')[:3]
 #     return render(request, 'book-detail.html', {'book': book, 'recent_books': recent_books})
 from rest_framework import viewsets, generics, status
-from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated, AllowAny
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 from .models import Book
@@ -95,3 +95,15 @@ class UploadBookView(APIView):
             serializer.save()
             return Response({'success': True, 'redirect_url': '/success/'}, status=status.HTTP_201_CREATED)
         return Response({'success': False, 'message': 'Error in form submission', 'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+    
+
+class CustomPageNumberPagination(PageNumberPagination):
+    page_size = 10
+    page_size_query_param = 'page_size'
+    max_page_size = 100
+    
+class AllBooksView(generics.ListAPIView):
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
+    pagination_class = CustomPageNumberPagination

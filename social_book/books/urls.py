@@ -8,7 +8,7 @@
 # ]
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views import BookViewSet, BookDetailView, UploadBookView
+from .views import BookViewSet, BookDetailView, UploadBookView, AllBooksView
 
 router = DefaultRouter()
 router.register(r'books', BookViewSet)
@@ -18,4 +18,6 @@ urlpatterns = [
     path('<int:pk>/', BookDetailView.as_view(), name='book-detail'),
     path('', include(router.urls)),
     path('user-books/', BookViewSet.as_view({'get': 'list'}), name='user-books'),
+    path('all-books/', AllBooksView.as_view(), name='all-books'), 
+
 ]

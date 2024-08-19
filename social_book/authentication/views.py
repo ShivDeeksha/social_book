@@ -75,6 +75,7 @@ from rest_framework.pagination import PageNumberPagination
 from books.serializers import BookSerializer
 from rest_framework.permissions import AllowAny
 
+
 # Sign up using Djoser
 class CustomUserViewSet(UserViewSet):
     serializer_class = CustomUserCreateSerializer

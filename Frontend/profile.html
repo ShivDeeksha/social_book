@@ -62,62 +62,7 @@
 						</a>
 					</div>
 				</div>
-				<div class="user-notification">
-					<div class="dropdown">
-						<a class="dropdown-toggle no-arrow" href="#" role="button" data-toggle="dropdown">
-							<i class="icon-copy dw dw-notification"></i>
-							<span class="badge notification-active"></span>
-						</a>
-						<div class="dropdown-menu dropdown-menu-right">
-							<div class="notification-list mx-h-350 customscroll">
-								<ul>
-									<li>
-										<a href="#">
-											<img src="vendors/images/img.jpg" alt="">
-											<h3>John Doe</h3>
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<img src="vendors/images/photo1.jpg" alt="">
-											<h3>Lea R. Frith</h3>
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<img src="vendors/images/photo2.jpg" alt="">
-											<h3>Erik L. Richards</h3>
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<img src="vendors/images/photo3.jpg" alt="">
-											<h3>John Doe</h3>
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<img src="vendors/images/photo4.jpg" alt="">
-											<h3>Renee I. Hansen</h3>
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<img src="vendors/images/img.jpg" alt="">
-											<h3>Vicki M. Coleman</h3>
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
+			
 				<div class="user-info-dropdown">
 					<div class="dropdown">
 						<a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
@@ -128,9 +73,8 @@
 						</a>
 						<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
 							<a class="dropdown-item" href="profile.html"><i class="dw dw-user1"></i> Profile</a>
-							<a class="dropdown-item" href="profile.html"><i class="dw dw-settings2"></i> Setting</a>
-							<a class="dropdown-item" href="faq.html"><i class="dw dw-help"></i> Help</a>
-							<a class="dropdown-item" href="login.html"><i class="dw dw-logout"></i> Log Out</a>
+							<a class="dropdown-item" href="javascript:void(0);" onclick="logout();"><i
+									class="dw dw-logout"></i> Log Out</a>
 						</div>
 					</div>
 				</div>
@@ -248,47 +192,51 @@
 							<a href="shop.html" class="dropdown-toggle no-arrow shop-link">
 								<span class="micon dw dw-shop"></span><span class="mtext1">Shop</span>
 							</a>
+						</li><li>
+							<a href="profile.html" class="dropdown-toggle no-arrow shop-link">
+								<span class="micon dw dw-user"></span><span class="mtext1">Profile</span>
+							</a>
 						</li>
 
-						<li>
+						<!-- <li>
 							<a href="#" class="dropdown-toggle no-arrow" data-section="my-collection">
 								<span class="micon fa fa-bank"></span><span class="mtext">My Collection</span>
 							</a>
-						</li>
-						<li>
+						</li> -->
+						<!-- <li>
 							<a href="invoice.html" class="dropdown-toggle no-arrow">
 								<span class="micon fi-book-bookmark"></span><span class="mtext">Continue Reading</span>
 							</a>
-						</li>
-						<li>
+						</li> -->
+						<!-- <li>
 							<a href="invoice.html" class="dropdown-toggle no-arrow">
 								<span class="micon fa fa-bullhorn"></span><span class="mtext">New Releases</span>
 							</a>
-						</li>
-						<li>
+						</li> -->
+						<!-- <li>
 							<a href="invoice.html" class="dropdown-toggle no-arrow">
 								<span class="micon dw dw-shopping-cart1"></span><span class="mtext">Cart</span>
 							</a>
-						</li>
-						<li>
+						</li> -->
+						<!-- <li>
 							<a href="invoice.html" class="dropdown-toggle no-arrow">
 								<span class="micon fa fa-history"></span><span class="mtext">History</span>
 							</a>
-						</li>
-						<li>
+						</li> -->
+						<!-- <li>
 							<a href="invoice.html" class="dropdown-toggle no-arrow">
 								<span class="micon fa fa-heart"></span><span class="mtext">Favourite Author</span>
 							</a>
-						</li>
+						</li> -->
 						<li>
-							<a href="#" class="dropdown-toggle no-arrow" data-section="my-books">
-								<span class="micon dw dw-library"></span><span class="mtext">My Books</span>
+							<a href="my-book.html" class="dropdown-toggle no-arrow my-book">
+								<span class="micon dw dw-books"></span><span class="mtext1">My Books</span>
 							</a>
 						</li>
 						<li>
 							<div class="dropdown-divider"></div>
 						</li>
-						<li>
+						<!-- <li>
 							<div class="sidebar-small-cap">Extra</div>
 						</li>
 						<li>
@@ -302,7 +250,7 @@
 								<span class="micon dw dw-paper-plane1"></span>
 								<span class="mtext">Feedback </span>
 							</a>
-						</li>
+						</li> -->
 					</ul>
 				</div>
 			</div>
@@ -408,10 +356,10 @@
 												data-target="#verification-modal" type="button"
 												class="btn btn-primary">Verify Profile</button>
 										</div> -->
-										<div id="verification-status" class="alert alert-success"
+										<!-- <div id="verification-status" class="alert alert-success"
 											style="display: none;">
 											Account verified
-										</div>
+										</div> -->
 
 
 										<!-- 
@@ -488,14 +436,14 @@
 													<a class="nav-link active" data-toggle="tab" href="#setting"
 														role="tab">Settings</a>
 												</li>
-												<li class="nav-item">
+												<!-- <li class="nav-item">
 													<a class="nav-link" data-toggle="tab" href="#blogs"
 														role="tab">Blogs</a>
 												</li>
 												<li class="nav-item">
 													<a class="nav-link " data-toggle="tab" href="#timeline"
 														role="tab">Liked</a>
-												</li>
+												</li> -->
 											</ul>
 											<div class="tab-content">
 												<!-- Setting Tab start -->
@@ -595,7 +543,7 @@
 													</div>
 												</div>
 												<!-- Setting Tab End -->
-												<div class="tab-pane fade  " id="blogs" role="tabpanel">
+												<!-- <div class="tab-pane fade  " id="blogs" role="tabpanel">
 
 
 													<div class="blog-wrap">
@@ -868,7 +816,7 @@
 
 																		</ul>
 																	</div>
-																	<!-- <div class="blog-pagination">
+																	<div class="blog-pagination">
 																									<div
 																										class="btn-toolbar justify-content-center mb-15">
 																										<div class="btn-group">
@@ -890,7 +838,7 @@
 																													class="fa fa-angle-double-right"></i></a>
 																										</div>
 																									</div>
-																								</div> -->
+																								</div> 
 																</div>
 
 															</div>
@@ -902,7 +850,7 @@
 												</div>
 
 												<div class="tab-pane fade  " id="blogs" role="tabpanel">
-												</div>
+												</div> 
 											</div>
 
 										</div>
@@ -911,7 +859,7 @@
 							</div>
 						</div>
 					</div>
-					<div id="my-collection" class="section" style="display: none;">
+					 <div id="my-collection" class="section" style="display: none;">
 						<div class="row">
 							<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 mb-30">
 								<div class="pd-20 card-box height-150-p">
@@ -1011,7 +959,7 @@
 												</li>
 											</ul>
 											<div class="tab-content">
-												<!-- Setting Tab start -->
+												Setting Tab start
 												<div class="tab-pane fade show active height-100-p" id="setting"
 													role="tabpanel">
 													<div class="profile-setting">
@@ -1080,7 +1028,7 @@
 																			</div>
 																		</div>
 																	</div>
-																	<!-- <div class="form-group">
+															<div class="form-group">
 																							<label>Gender</label>
 																							<div class="d-flex">
 																								<div
@@ -1112,7 +1060,7 @@
 																								<option>India</option>
 																								<option>United Kingdom</option>
 																							</select>
-																						</div> -->
+																						</div>
 																	<div class="form-group mb-0">
 																		<input type="submit" class="btn btn-primary"
 																			value="Update Information">
@@ -1123,7 +1071,7 @@
 														</form>
 													</div>
 												</div>
-												<!-- Setting Tab End -->
+				
 												<div class="tab-pane fade  " id="blogs" role="tabpanel">
 
 
@@ -1397,7 +1345,7 @@
 
 																		</ul>
 																	</div>
-																	<!-- <div class="blog-pagination">
+																	 <div class="blog-pagination">
 																									<div
 																										class="btn-toolbar justify-content-center mb-15">
 																										<div class="btn-group">
@@ -1419,7 +1367,7 @@
 																													class="fa fa-angle-double-right"></i></a>
 																										</div>
 																									</div>
-																								</div> -->
+																								</div> 
 																</div>
 
 															</div>
@@ -1439,250 +1387,7 @@
 								</div>
 							</div>
 						</div>
-					</div>
-					<div id="my-books" class="section" style="display: none;">
-						<div class="tab">
-							<ul class="nav nav-tabs" role="tablist">
-								<li class="nav-item">
-									<a class="nav-link active text-blue" data-toggle="tab" href="#books" role="tab"
-										aria-selected="true">Books</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link text-blue" data-toggle="tab" href="#upload" role="tab"
-										aria-selected="true">Upload Book</a>
-								</li>
-								<!-- <li class="nav-item">
-									<a class="nav-link text-blue" data-toggle="tab" href="#contact" role="tab"
-										aria-selected="false">Contact</a>
-								</li> -->
-							</ul>
-							<div class="tab-content">
-								<div class="tab-pane fade show active" id="books" role="tabpanel">
-									<div class="pd-20">
-										<div class="product-wrap">
-											<div class="product-list">
-												<ul class="row">
-												</ul>
-											</div>
-											<div class="blog-pagination mb-30">
-												<div class="btn-toolbar justify-content-center mb-15">
-													<div class="btn-group">
-														<a href="#" class="btn btn-outline-primary prev"><i
-																class="fa fa-angle-double-left"></i></a>
-														<a href="#" class="btn btn-outline-primary">1</a>
-														<a href="#" class="btn btn-outline-primary">2</a>
-														<span class="btn btn-primary current">3</span>
-														<a href="#" class="btn btn-outline-primary">4</a>
-														<a href="#" class="btn btn-outline-primary">5</a>
-														<a href="#" class="btn btn-outline-primary next"><i
-																class="fa fa-angle-double-right"></i></a>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="tab-pane fade" id="upload" role="tabpanel">
-									<div class="pd-20 card-box mb-30">
-										<div class="clearfix">
-											<h4 class="text-blue h4">Step Wizard for Book Upload</h4>
-											<p class="mb-30">Multi-step form for uploading book details</p>
-										</div>
-										<div class="wizard-content pt-30">
-											<form method="POST" enctype="multipart/form-data"
-												class="tab-wizard wizard-circle wizard"
-												action="http://127.0.0.1:8000/books/upload-book/">
-												<!-- Step 1: Basic Details -->
-												<h5>Basic Details</h5>
-												<section>
-													<div class="form-group">
-														<label>Book Title:</label>
-														<input type="text" id="book-title" name="title"
-															class="form-control" required>
-													</div>
-													<div class="form-group">
-														<label>Author:</label>
-														<input type="text" id="author" name="author"
-															class="form-control" required>
-													</div>
-													<div class="form-group">
-														<label>Publish Date:</label>
-														<input type="text" id="publish-date" name="publish_date"
-															class="form-control date-picker" placeholder="Select Date"
-															required>
-													</div>
-													<div class="form-group">
-														<label>Publisher:</label>
-														<input type="text" id="publisher" name="publisher"
-															class="form-control" required>
-													</div>
-													<div class="form-group">
-														<label>Language:</label>
-														<input type="text" id="language" name="language"
-															class="form-control" required>
-													</div>
-													<div class="form-group">
-														<label>Pages:</label>
-														<input type="number" id="pages" name="pages"
-															class="form-control" required>
-													</div>
-													<div class="form-group">
-														<label>Published In:</label>
-														<input type="text" id="published-in" name="published_in"
-															class="form-control" required>
-													</div>
-													<div class="form-group">
-														<label>Series:</label>
-														<input type="text" id="series" name="series"
-															class="form-control">
-													</div>
-												</section>
-
-												<!-- Step 2: Genre and Description -->
-												<h5>Genre & Description</h5>
-												<section>
-													<div class="form-group">
-														<label>Select Genre</label>
-														<select id="genre" name="genre"
-															class="selectpicker form-control" data-size="5"
-															data-style="btn-outline-primary" multiple
-															data-actions-box="true" data-selected-text-format="count">
-															<optgroup label="Genres">
-																<option value="Action/Adventure fiction">
-																	Action/Adventure fiction</option>
-																<option value="Children’s fiction">Children’s
-																	fiction</option>
-																<option value="Classic fiction">Classic fiction
-																</option>
-																<option value="Contemporary fiction">
-																	Contemporary
-																	fiction</option>
-																<option value="Fantasy">Fantasy</option>
-																<option value="Graphic novel">Graphic novel
-																</option>
-																<option value="Historical fiction">Historical
-																	fiction</option>
-																<option value="Horror">Horror</option>
-																<option value="LGBTQ+">LGBTQ+</option>
-																<option value="Literary fiction">Literary
-																	fiction
-																</option>
-																<option value="Mystery">Mystery</option>
-																<option value="New adult">New adult</option>
-																<option value="Romance">Romance</option>
-																<option value="Satire">Satire</option>
-																<option value="Science fiction">Science fiction
-																</option>
-																<option value="Short story">Short story</option>
-																<option value="Thriller">Thriller</option>
-																<option value="Western">Western</option>
-																<option value="Women’s fiction">Women’s fiction
-																</option>
-																<option value="Young adult">Young adult</option>
-																<option value="Art & photography">Art &
-																	photography
-																</option>
-																<option value="Autobiography/Memoir">
-																	Autobiography/Memoir</option>
-																<option value="Biography">Biography</option>
-																<option value="Essays">Essays</option>
-																<option value="Food & drink">Food & drink
-																</option>
-																<option value="History">History</option>
-																<option value="How-To/Guides">How-To/Guides
-																</option>
-																<option value="Humanities & social sciences">
-																	Humanities & social sciences</option>
-																<option value="Humor">Humor</option>
-																<option value="Parenting">Parenting</option>
-																<option value="Philosophy">Philosophy</option>
-																<option value="Religion & spirituality">Religion
-																	&
-																	spirituality</option>
-																<option value="Science & technology">Science &
-																	technology</option>
-																<option value="Self-help">Self-help</option>
-																<option value="Travel">Travel</option>
-																<option value="True crime">True crime</option>
-															</optgroup>
-														</select>
-													</div>
-													<div class="form-group">
-														<label>Description:</label>
-														<textarea id="description" name="description"
-															class="form-control" rows="5" required></textarea>
-													</div>
-													<div class="form-group">
-														<label>Message from the Author:</label>
-														<textarea id="message-from-author" name="message_from_author"
-															class="form-control" rows="3"></textarea>
-													</div>
-												</section>
-
-												<!-- Step 3: Upload Files -->
-												<h5>Upload Files</h5>
-												<section>
-													<div class="form-group">
-														<label>Cost:</label>
-														<input type="text" id="cost" name="cost" class="form-control"
-															required>
-													</div>
-													<div class="row">
-														<div class="col-lg-6">
-															<div class="pd-20 card-box mb-30">
-																<div class="clearfix mb-20">
-																	<div class="pull-left">
-																		<h4 class="text-blue h4">Upload Image</h4>
-																	</div>
-																</div>
-																<input type="file" id="book-image" name="image"
-																	class="form-control" required>
-															</div>
-														</div>
-														<div class="col-lg-6">
-															<div class="pd-20 card-box mb-30">
-																<div class="clearfix mb-20">
-																	<div class="pull-left">
-																		<h4 class="text-blue h4">Upload Book PDF</h4>
-																	</div>
-																</div>
-																<input type="file" id="book-pdf" name="book_pdf"
-																	class="form-control" required>
-															</div>
-														</div>
-													</div>
-
-													<div class="form-group">
-														<label>Visibility:</label>
-														<select id="visibility" name="visibility" class="form-control"
-															required>
-															<option value="public">Public</option>
-															<option value="private">Private</option>
-														</select>
-													</div>
-												</section>
-											</form>
-										</div>
-									</div>
-								</div>
-
-							</div>
-
-							<div class="tab-pane fade" id="contact" role="tabpanel">
-								<div class="pd-20">
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-									incididunt ut labore et
-									dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-									laboris nisi ut aliquip
-									ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-									velit esse cillum dolore eu
-									fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-									culpa qui officia
-									deserunt mollit anim id est laborum.
-								</div>
-							</div>
-						</div>
-					</div>
+					</div> -->
 
 				</div>
 			</div>
@@ -2045,7 +1750,7 @@
 		</script>
 		<script>
 			document.addEventListener('DOMContentLoaded', function () {
-				const sections = document.querySelectorAll('.sidebar-menu a:not(.shop-link)'); // Exclude shop-link
+				const sections = document.querySelectorAll('.sidebar-menu a:not(.shop-link):not(.my-book)'); // Exclude shop-link and my-book
 				const sectionTitle = document.getElementById('section-title');
 				const breadcrumbSection = document.getElementById('breadcrumb-section');
 
@@ -2077,7 +1782,28 @@
 
 
 		<script>
-			console.log($('#genre').val());
+			function logout() {
+				fetch('http://127.0.0.1:8000/auth/logout/', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+						'Authorization': `Bearer ${localStorage.getItem('access_token')}`, // or from cookies
+					},
+				})
+					.then(response => {
+						if (response.ok) {
+							localStorage.removeItem('access_token'); // Clear the token from local storage
+							window.location.href = 'login.html'; // Redirect to login page
+						} else {
+							console.error('Logout failed');
+							alert('Logout failed. Please try again.');
+						}
+					})
+					.catch(error => {
+						console.error('Error:', error);
+						alert('An error occurred. Please try again.');
+					});
+			}
 
 		</script>
 	</body>

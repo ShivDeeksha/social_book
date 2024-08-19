@@ -10,6 +10,7 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from .views import CustomUserViewSet, ProfileView, UserTypeView
+from djoser.views import TokenDestroyView
 
 router = DefaultRouter()
 router.register(r'users', CustomUserViewSet, basename='user')
@@ -22,4 +23,5 @@ urlpatterns = [
      path('users/authors/', UserTypeView.as_view(), {'user_type': 'author'}, name='author_users'),
     path('users/readers/', UserTypeView.as_view(), {'user_type': 'reader'}, name='reader_users'),
     path('users/sellers/', UserTypeView.as_view(), {'user_type': 'seller'}, name='seller_users'),
+path('logout/', TokenDestroyView.as_view(), name='token_logout'),
 ]

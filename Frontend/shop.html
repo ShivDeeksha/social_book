@@ -63,76 +63,22 @@
                         </a>
                     </div>
                 </div>
-                <div class="user-notification">
-                    <div class="dropdown">
-                        <a class="dropdown-toggle no-arrow" href="#" role="button" data-toggle="dropdown">
-                            <i class="icon-copy dw dw-notification"></i>
-                            <span class="badge notification-active"></span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <div class="notification-list mx-h-350 customscroll">
-                                <ul>
-                                    <li>
-                                        <a href="#">
-                                            <img src="vendors/images/img.jpg" alt="">
-                                            <h3>John Doe</h3>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <img src="vendors/images/photo1.jpg" alt="">
-                                            <h3>Lea R. Frith</h3>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <img src="vendors/images/photo2.jpg" alt="">
-                                            <h3>Erik L. Richards</h3>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <img src="vendors/images/photo3.jpg" alt="">
-                                            <h3>John Doe</h3>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <img src="vendors/images/photo4.jpg" alt="">
-                                            <h3>Renee I. Hansen</h3>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <img src="vendors/images/img.jpg" alt="">
-                                            <h3>Vicki M. Coleman</h3>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    
                 <div class="user-info-dropdown">
                     <div class="dropdown">
                         <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
                             <span class="user-icon">
                                 <img src="vendors/images/photo1.jpg" alt="">
                             </span>
-                            <span class="user-name">Welcome back {{ user.first_name }}</span>
+                            <span class="user-name">Welcome back </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
                             <a class="dropdown-item" href="profile.html"><i class="dw dw-user1"></i> Profile</a>
                             <a class="dropdown-item" href="profile.html"><i class="dw dw-settings2"></i> Setting</a>
-                            <a class="dropdown-item" href="faq.html"><i class="dw dw-help"></i> Help</a>
-                            <a class="dropdown-item" href="login.html"><i class="dw dw-logout"></i> Log Out</a>
-                        </div>
+<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+    <a class="dropdown-item" href="profile.html"><i class="dw dw-user1"></i> Profile</a>
+    <a class="dropdown-item" href="javascript:void(0);" onclick="logout();"><i class="dw dw-logout"></i> Log Out</a>
+</div>                        </div>
                     </div>
                 </div>
 
@@ -246,65 +192,68 @@
                 <div class="sidebar-menu">
                     <ul id="accordion-menu">
                         <li>
-                            <a href="shop.html" class="dropdown-toggle no-arrow">
-                                <span class="micon dw dw-shop"></span><span class="mtext">Shop</span>
-                            </a>
-
-                        </li>
-
-                        <li>
-                            <a href="#" class="dropdown-toggle no-arrow" data-section="my-collection">
-                                <span class="micon fa fa-bank"></span><span class="mtext">My Collection</span>
+                            <a href="shop.html" class="dropdown-toggle no-arrow shop-link">
+                                <span class="micon dw dw-shop"></span><span class="mtext1">Shop</span>
                             </a>
                         </li>
+<li>
+    <a href="profile.html" class="dropdown-toggle no-arrow shop-link">
+        <span class="micon dw dw-user"></span><span class="mtext1">Profile</span>
+    </a>
+</li>
+                        <!-- <li>
+            							<a href="#" class="dropdown-toggle no-arrow" data-section="my-collection">
+            								<span class="micon fa fa-bank"></span><span class="mtext">My Collection</span>
+            							</a>
+            						</li> -->
+                        <!-- <li>
+            							<a href="invoice.html" class="dropdown-toggle no-arrow">
+            								<span class="micon fi-book-bookmark"></span><span class="mtext">Continue Reading</span>
+            							</a>
+            						</li> -->
+                        <!-- <li>
+            							<a href="invoice.html" class="dropdown-toggle no-arrow">
+            								<span class="micon fa fa-bullhorn"></span><span class="mtext">New Releases</span>
+            							</a>
+            						</li> -->
+                        <!-- <li>
+            							<a href="invoice.html" class="dropdown-toggle no-arrow">
+            								<span class="micon dw dw-shopping-cart1"></span><span class="mtext">Cart</span>
+            							</a>
+            						</li> -->
+                        <!-- <li>
+            							<a href="invoice.html" class="dropdown-toggle no-arrow">
+            								<span class="micon fa fa-history"></span><span class="mtext">History</span>
+            							</a>
+            						</li> -->
+                        <!-- <li>
+            							<a href="invoice.html" class="dropdown-toggle no-arrow">
+            								<span class="micon fa fa-heart"></span><span class="mtext">Favourite Author</span>
+            							</a>
+            						</li> -->
                         <li>
-                            <a href="invoice.html" class="dropdown-toggle no-arrow">
-                                <span class="micon fi-book-bookmark"></span><span class="mtext">Continue Reading</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="invoice.html" class="dropdown-toggle no-arrow">
-                                <span class="micon fa fa-bullhorn"></span><span class="mtext">New Releases</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="invoice.html" class="dropdown-toggle no-arrow">
-                                <span class="micon dw dw-shopping-cart1"></span><span class="mtext">Cart</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="invoice.html" class="dropdown-toggle no-arrow">
-                                <span class="micon fa fa-history"></span><span class="mtext">History</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="invoice.html" class="dropdown-toggle no-arrow">
-                                <span class="micon fa fa-heart"></span><span class="mtext">Favourite Author</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="dropdown-toggle no-arrow" data-section="my-books">
-                                <span class="micon dw dw-library"></span><span class="mtext">My Books</span>
+                            <a href="my-book.html" class="dropdown-toggle no-arrow my-book">
+                                <span class="micon dw dw-books"></span><span class="mtext1">My Books</span>
                             </a>
                         </li>
                         <li>
                             <div class="dropdown-divider"></div>
                         </li>
-                        <li>
-                            <div class="sidebar-small-cap">Extra</div>
-                        </li>
-                        <li>
-                            <a href="faq.html" target="_blank" class="dropdown-toggle no-arrow">
-                                <span class="micon dw dw-paper-plane1"></span>
-                                <span class="mtext">FAQs </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="faq.html" target="_blank" class="dropdown-toggle no-arrow">
-                                <span class="micon dw dw-paper-plane1"></span>
-                                <span class="mtext">Feedback </span>
-                            </a>
-                        </li>
+                        <!-- <li>
+            							<div class="sidebar-small-cap">Extra</div>
+            						</li>
+            						<li>
+            							<a href="faq.html" target="_blank" class="dropdown-toggle no-arrow">
+            								<span class="micon dw dw-paper-plane1"></span>
+            								<span class="mtext">FAQs </span>
+            							</a>
+            						</li>
+            						<li>
+            							<a href="faq.html" target="_blank" class="dropdown-toggle no-arrow">
+            								<span class="micon dw dw-paper-plane1"></span>
+            								<span class="mtext">Feedback </span>
+            							</a>
+            						</li> -->
                     </ul>
                 </div>
             </div>
@@ -330,8 +279,18 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="product-wrap">
-                        <h4>Books</h4>
+                        <h4>Local Books</h4>
+                        <div class="product-list">
+                            <ul class="row" id="local-book-list">
+                                <!-- Books will be dynamically inserted here -->
+                            </ul>
+                        </div>
+                        <div id="local-pagination" class="pagination">
+                            <!-- Pagination will be dynamically inserted here -->
+                        </div>
+                        <h4>Kindle Books</h4>
                         <div class="product-list">
                             <ul class="row" id="book-list">
                                 <!-- Books will be dynamically inserted here -->
@@ -434,7 +393,7 @@
                                     <p>by ${book.author}</p>
                                     <p>${book.stars} Stars | $${book.price}</p>
                                     <a href="${book.product_url}" class="btn btn-outline-primary" target="_blank">Read Now</a>
-                                    <a href="book-detail.html?book_id=${book.id}" class="btn btn-outline-primary">See More</a>
+                                    <a href="book-detail.html?book_id=${book.id}&source=kindle" class="btn btn-outline-primary">See More</a>
                                 </div>
                             </div>
                         </li>
@@ -516,6 +475,128 @@
                 fetchBooks();
             });
         </script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const localBookListElem = document.getElementById('local-book-list');
+        const localPaginationElem = document.getElementById('local-pagination');
+
+        async function fetchLocalBooks(page = 1) {
+            try {
+                const response = await fetch(`http://127.0.0.1:8000/books/all-books/?page=${page}`, {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+
+                const data = await response.json();
+
+                if (!data.results || !Array.isArray(data.results)) {
+                    throw new Error('Invalid data format');
+                }
+
+                localBookListElem.innerHTML = '';
+                localPaginationElem.innerHTML = '';
+
+                data.results.forEach(book => {
+                    const bookItem = `
+                    <li class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="product-box">
+                            <div class="product-img">
+                                <img src="${book.image}" alt="${book.title}" style="width: auto; height: 50%; margin-left:25%; padding:20px">
+                            </div>
+                            <div class="product-caption">
+                                <h4>${book.title}</h4>
+                                <p>by ${book.author}</p>
+                                <p>$${book.cost}</p>
+                                <a href="${book.book_pdf}" class="btn btn-outline-primary" target="_blank">Read Now</a>
+                                <a href="book-detail.html?book_id=${book.id}&source=local" class="btn btn-outline-primary">See More</a>
+                            </div>
+                        </div>
+                    </li>
+                    `;
+                    localBookListElem.insertAdjacentHTML('beforeend', bookItem);
+                });
+
+                const totalPages = Math.ceil(data.count / 10);
+                const currentPage = parseInt(page);
+
+                if (totalPages > 1) {
+                    let paginationHTML = '';
+
+                    if (currentPage > 1) {
+                        paginationHTML += `<a href="#" class="btn btn-outline-primary" data-page="1">First</a>`;
+                        paginationHTML += `<a href="#" class="btn btn-outline-primary" data-page="${currentPage - 1}">Previous</a>`;
+                    }
+
+                    if (totalPages <= 6) {
+                        for (let i = 1; i <= totalPages; i++) {
+                            paginationHTML += createPageButton(i, currentPage);
+                        }
+                    } else {
+                        if (currentPage <= 4) {
+                            for (let i = 1; i <= 5; i++) {
+                                paginationHTML += createPageButton(i, currentPage);
+                            }
+                            paginationHTML += `<span>...</span>`;
+                            paginationHTML += createPageButton(totalPages - 2, currentPage);
+                            paginationHTML += createPageButton(totalPages - 1, currentPage);
+                            paginationHTML += createPageButton(totalPages, currentPage);
+                        } else if (currentPage >= totalPages - 3) {
+                            paginationHTML += createPageButton(1, currentPage);
+                            paginationHTML += createPageButton(2, currentPage);
+                            paginationHTML += `<span>...</span>`;
+                            for (let i = totalPages - 4; i <= totalPages; i++) {
+                                paginationHTML += createPageButton(i, currentPage);
+                            }
+                        } else {
+                            paginationHTML += createPageButton(1, currentPage);
+                            paginationHTML += createPageButton(2, currentPage);
+                            paginationHTML += `<span>...</span>`;
+                            for (let i = currentPage - 1; i <= currentPage + 1; i++) {
+                                paginationHTML += createPageButton(i, currentPage);
+                            }
+                            paginationHTML += `<span>...</span>`;
+                            paginationHTML += createPageButton(totalPages - 1, currentPage);
+                            paginationHTML += createPageButton(totalPages, currentPage);
+                        }
+                    }
+
+                    if (currentPage < totalPages) {
+                        paginationHTML += `<a href="#" class="btn btn-outline-primary" data-page="${currentPage + 1}">Next</a>`;
+                        paginationHTML += `<a href="#" class="btn btn-outline-primary" data-page="${totalPages}">Last</a>`;
+                    }
+
+                    localPaginationElem.innerHTML = paginationHTML;
+
+                    document.querySelectorAll('[data-page]').forEach(button => {
+                        button.addEventListener('click', function (event) {
+                            event.preventDefault();
+                            const page = this.getAttribute('data-page');
+                            fetchLocalBooks(page);
+                        });
+                    });
+                }
+            } catch (error) {
+                console.error('Error fetching books:', error);
+                alert('Error fetching books. Please try again later.');
+            }
+        }
+
+        function createPageButton(page, currentPage) {
+            return page === currentPage
+                ? `<a href="#" class="btn btn-outline-primary active">${page}</a>`
+                : `<a href="#" class="btn btn-outline-primary" data-page="${page}">${page}</a>`;
+        }
+
+        fetchLocalBooks();
+    });
+</script>
+
+
         <script>
             window.addEventListener('DOMContentLoaded', function () {
                 var image = document.getElementById('image');
@@ -650,7 +731,31 @@
                 // Show the default section (Profile)
                 document.getElementById('profile').style.display = 'block';
             });
-        </script> -->
+        </script> --><script>
+            function logout() {
+                fetch('http://127.0.0.1:8000/auth/logout/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${localStorage.getItem('access_token')}`, // or from cookies
+                    },
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            localStorage.removeItem('access_token'); // Clear the token from local storage
+                            window.location.href = 'login.html'; // Redirect to login page
+                        } else {
+                            console.error('Logout failed');
+                            alert('Logout failed. Please try again.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('An error occurred. Please try again.');
+                    });
+            }
+
+        </script>
 
         <script>
             console.log($('#genre').val());
